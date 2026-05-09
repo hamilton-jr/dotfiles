@@ -1,0 +1,38 @@
+# --- Configurações Gerais ---
+set -g default-terminal "tmux-256color"
+set -g mouse on
+setw -g mode-keys vi
+set -g status-position top
+
+# --- Configuração do Tema Catppuccin ---
+set -g @catppuccin_flavor "mocha"
+set -g @catppuccin_window_status_style "rounded"
+set -g @catppuccin_status_session_icon_bg "#{?pane_in_mode,yellow,#{?client_prefix,red,blue}}"
+
+set -g @catppuccin_window_default_text " #W"
+set -g @catppuccin_window_current_text " #W"
+
+set -g status-left-length 100
+set -g status-left "#{E:@catppuccin_status_session} "
+
+set -g status-right-length 100
+set -g status-right "#{E:@catppuccin_status_directory}"
+set -ag status-right "#{E:@catppuccin_status_user}"
+set -ag status-right "#{E:@catppuccin_status_host}"
+
+set -g @catppuccin_directory_text " #{pane_current_path}"
+
+# --- Gerenciador de Plugins (TPM) ---
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'catppuccin/tmux#v2.1.2'
+
+# --- Configuração do Prefixo ---
+unbind C-b
+set-option -g prefix C-Space
+bind C-Space send-prefix
+
+# Garante que o Prefixo + [ entre no modo de cópia
+bind [ copy-mode
+
+# Inicializa o TPM (deve ser a última linha do arquivo)
+run '~/.config/tmux/plugins/tpm/tpm'
