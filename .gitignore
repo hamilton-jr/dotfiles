@@ -1,5 +1,6 @@
 /*
 !.gitignore
 !/fzf
+!/nano
 !/tmux
 !/yazi
