@@ -1,3 +1,4 @@
-gh/
-go/
-pulse/
+/*
+!.gitignore
+!/tmux
+!/yazi
